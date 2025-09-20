@@ -1,1 +1,9 @@
-spring.application.name=wp-payroll
+server:
+  port: 8081
+spring:
+  application:
+    name: wp-payroll
+
+services:
+  worker:
+    url: http://localhost:8080/api/v1/worker
