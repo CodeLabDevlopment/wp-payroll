@@ -18,6 +18,18 @@ spring:
 #              - host: localhost
 #                port: 8082
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      wp-worker:
+        registerHealthIndicator: true # Habilita o monitoramento de saúde do Spring Actuator
+        slidingWindowType: COUNT_BASED # Monitora um número fixo de chamadas
+        slidingWindowSize: 10 # Tamanho da "janela" de chamadas monitoradas
+        minimumNumberOfCalls: 5 # Mínimo de chamadas para começar a calcular a taxa de falha
+        failureRateThreshold: 50 # Porcentagem de falhas para abrir o circuito
+        waitDurationInOpenState: 6000 # Tempo de espera (ms) no estado "aberto"
+        permittedNumberOfCallsInHalfOpenState: 3 # Número de chamadas permitidas no estado "meio-aberto"
+
 eureka:
   instances:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
