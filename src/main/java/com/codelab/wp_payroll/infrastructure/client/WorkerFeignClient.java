@@ -5,10 +5,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "worker-service", url = "${services.worker.url}")
+@FeignClient(name = "wp-worker")
 public interface WorkerFeignClient {
 
-    @GetMapping("{workerId}")
+    @GetMapping("/api/v1/worker/{workerId}")
     Response getWorkerById(@PathVariable Long workerId);
 
 }
