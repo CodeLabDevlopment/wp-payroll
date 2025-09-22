@@ -40,8 +40,8 @@ dependencies {
 	// OpenFeign
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
-	// Spring Cloud LoadBalancer
-// 	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+    // circuit breaker
+    implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 
 	// eureka
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
