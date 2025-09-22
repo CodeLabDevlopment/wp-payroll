@@ -3,19 +3,27 @@ server:
 spring:
   application:
     name: wp-payroll
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-    discovery:
-      client:
-        simple:
-          instances:
-            wp-worker:
-              - host: localhost
-                port: 8080
-              - host: localhost
-                port: 8082
+
+#  cloud:
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+#    discovery:
+#      client:
+#        simple:
+#          instances:
+#            wp-worker:
+#              - host: localhost
+#                port: 8080
+#              - host: localhost
+#                port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      register-with-eureka: true
+      fetch-registry: true
 
 services:
   worker:
