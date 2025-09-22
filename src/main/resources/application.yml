@@ -3,6 +3,19 @@ server:
 spring:
   application:
     name: wp-payroll
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      client:
+        simple:
+          instances:
+            wp-worker:
+              - host: localhost
+                port: 8080
+              - host: localhost
+                port: 8082
 
 services:
   worker:
